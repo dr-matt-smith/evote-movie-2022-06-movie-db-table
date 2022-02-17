@@ -27,12 +27,6 @@ Add PDO DB library and get Movies from database table
 
   - replace `passpass` with the MySQL root password for your computer system
 
-- create a new folder `db` containing a PHP script `migrationsAndFixtures.php`
-
-- copy the contents of the `findAll()` method of class `MovieRepository` into file `db/migrationsAndFixtures.php`
-
-    - we'll complete this file later
-
 - create a new class `/src/MovieRepository.php` and make this empty class inherit from ` Mattsmithdev\PdoCrudRepo\DatabaseTableRepository`:
 
     ```php
@@ -46,7 +40,7 @@ Add PDO DB library and get Movies from database table
         }
     ```
 
-- create a new directory `/dbsetup`, containing file `migrationsAndFixtures.php` to create/reset a DB table `movie`, then get the array of `Movie` objects from a `MovieFixtures` object, and insert all those objects into the datatabase
+- create a new directory `/dbsetup`, containing file `migrationsAndFixtures.php` to create/reset a DB table `movie`, then get the array of `Movie` objects from a `MovieFixtures` object, and insert all those objects into the database
 
   ```php
         require_once __DIR__ . '/../vendor/autoload.php';
@@ -59,7 +53,7 @@ Add PDO DB library and get Movies from database table
         $movieRepository->insertMany($movies);
   ```
 
-- at the command line, execute PHP script `/dbsetup/migrationAndFixtures.php`. If no schema matching the name in your `.env` file exists, then a new schema of the specified name will be created, and a messasge displayed to confirm this action:
+- at the command line, execute PHP script `/dbsetup/migrationAndFixtures.php`. If no schema matching the name in your `.env` file exists, then a new schema of the specified name will be created, and a message displayed to confirm this action:
 
     ```bash
       matt$ php dbsetup/migrationAndFixtures.php 
@@ -67,7 +61,7 @@ Add PDO DB library and get Movies from database table
         database 'evote2022' did not exists, so new schema created
 
     ```
-- refactor the `list()` method of class `MainController` to create a repository object, and dynamically retreive all `Movie` objects from teh MySQL database:
+- refactor the `list()` method of class `MainController` to create a repository object, and dynamically retrieve all `Movie` objects from the MySQL database:
 
   ```php
         public function list()
